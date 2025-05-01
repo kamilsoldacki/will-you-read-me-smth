@@ -11,7 +11,6 @@
         }
     </style>
     <script>
-        // losowe pastelowe tło
         function pastelColor() {
             const hue = Math.floor(Math.random() * 360);
             return `hsl(${hue}, 100%, 95%)`;
@@ -27,23 +26,28 @@
         <form id="storyForm" class="space-y-4">
             <div>
                 <label class="font-semibold block">1. Gdzie rozgrywa się akcja historii?</label>
-                <textarea name="q1" required class="w-full p-2 border rounded"></textarea>
+                <textarea name="q1" required class="w-full p-2 border rounded"
+                    placeholder="Np. zaczarowany las, Twoje mieszkanie, biuro pełne robotów, odległa planeta, podwodna kraina albo ukryte miasto w piwnicy Nowego Jorku – sky is the limit!"></textarea>
             </div>
             <div>
                 <label class="font-semibold block">2. Jak nazywają się główni bohaterowie?</label>
-                <textarea name="q2" required class="w-full p-2 border rounded"></textarea>
+                <textarea name="q2" required class="w-full p-2 border rounded"
+                    placeholder="Np. Twoje imię, imiona znajomych, domowników, ukochanych pluszaków lub ulubionych postaci z gier"></textarea>
             </div>
             <div>
                 <label class="font-semibold block">3. Jaki jest motyw przewodni historii?</label>
-                <textarea name="q3" required class="w-full p-2 border rounded"></textarea>
+                <textarea name="q3" required class="w-full p-2 border rounded"
+                    placeholder="Np. odwaga, przyjaźń, magia, wielka tajemnica, walka ze strachem lub szalona przygoda"></textarea>
             </div>
             <div>
                 <label class="font-semibold block">4. Czy bohaterowie mają jakieś supermoce?</label>
-                <textarea name="q4" required class="w-full p-2 border rounded"></textarea>
+                <textarea name="q4" required class="w-full p-2 border rounded"
+                    placeholder="Np. niewidzialność, podróże w czasie, rozmowa ze zwierzętami, kontrola pogody, nadludzka siła, teleportacja"></textarea>
             </div>
             <div>
                 <label class="font-semibold block">5. Co bohaterowie robią w tej historii?</label>
-                <textarea name="q5" required class="w-full p-2 border rounded"></textarea>
+                <textarea name="q5" required class="w-full p-2 border rounded"
+                    placeholder="Np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś, znajdują skarb, ratują świat przed AI"></textarea>
             </div>
             <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Generuj historię</button>
         </form>
