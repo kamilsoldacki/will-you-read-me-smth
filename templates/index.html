@@ -3,31 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <title>Twoja Historia</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-    <h1>Wypełnij formularz i posłuchaj historii</h1>
-    <form id="storyForm">
-        <label>1. Gdzie rozgrywa się akcja historii?</label><br>
-        <textarea name="q1" required></textarea><br>
+<body class="bg-gray-50 p-8 text-gray-800 font-sans">
+    <div class="max-w-xl mx-auto bg-white shadow-xl rounded-xl p-8">
+        <h1 class="text-3xl font-bold mb-6 text-center">Wypełnij formularz i posłuchaj historii</h1>
+        <form id="storyForm" class="space-y-4">
+            <div>
+                <label class="font-semibold block">1. Gdzie rozgrywa się akcja historii?</label>
+                <textarea name="q1" required class="w-full p-2 border rounded"></textarea>
+            </div>
+            <div>
+                <label class="font-semibold block">2. Jak nazywają się główni bohaterowie?</label>
+                <textarea name="q2" required class="w-full p-2 border rounded"></textarea>
+            </div>
+            <div>
+                <label class="font-semibold block">3. Jaki jest motyw przewodni historii?</label>
+                <textarea name="q3" required class="w-full p-2 border rounded"></textarea>
+            </div>
+            <div>
+                <label class="font-semibold block">4. Czy bohaterowie mają jakieś supermoce?</label>
+                <textarea name="q4" required class="w-full p-2 border rounded"></textarea>
+            </div>
+            <div>
+                <label class="font-semibold block">5. Co bohaterowie robią w tej historii?</label>
+                <textarea name="q5" required class="w-full p-2 border rounded"></textarea>
+            </div>
+            <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Generuj historię</button>
+        </form>
 
-        <label>2. Jak nazywają się główni bohaterowie?</label><br>
-        <textarea name="q2" required></textarea><br>
-
-        <label>3. Jaki jest motyw przewodni historii?</label><br>
-        <textarea name="q3" required></textarea><br>
-
-        <label>4. Czy bohaterowie mają jakieś supermoce?</label><br>
-        <textarea name="q4" required></textarea><br>
-
-        <label>5. Co bohaterowie robią w tej historii?</label><br>
-        <textarea name="q5" required></textarea><br>
-
-        <button type="submit">Generuj historię</button>
-    </form>
-
-    <div id="player" style="display:none;">
-        <h2>Twoja historia:</h2>
-        <audio id="audio" controls></audio>
+        <div id="player" style="display:none;" class="mt-8">
+            <h2 class="text-xl font-bold mb-2">Twoja historia:</h2>
+            <audio id="audio" controls class="w-full"></audio>
+        </div>
     </div>
 
     <script src="/static/script.js"></script>
