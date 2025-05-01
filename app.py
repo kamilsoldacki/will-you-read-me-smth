@@ -2,6 +2,8 @@ from flask import Flask, render_template, request, jsonify
 import openai
 import requests
 import os
+from io import BytesIO
+import base64
 
 app = Flask(__name__)
 
@@ -58,11 +60,13 @@ Używaj tylko słownych zapisów dla wszystkich liczb. Sprawdź poprawność ję
         json=json_data
     )
 
-    audio_path = "static/story.mp3"
-    with open(audio_path, "wb") as f:
-        f.write(tts_response.content)
+    if tts_response.status_code != 200:
+        return jsonify({"error": "Błąd podczas generowania audio"}), 500
 
-    return jsonify({"audio_url": "/static/story.mp3"})
+    audio_bytes = BytesIO(tts_response.content)
+    audio_base64 = base64.b64encode(audio_bytes.read()).decode('utf-8')
+
+    return jsonify({"audio_base64": audio_base64})
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
