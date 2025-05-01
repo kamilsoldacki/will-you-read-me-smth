@@ -4,9 +4,25 @@
     <meta charset="UTF-8">
     <title>Twoja Historia</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-size: 80%;
+            transition: background-color 1s ease;
+        }
+    </style>
+    <script>
+        // losowe pastelowe tło
+        function pastelColor() {
+            const hue = Math.floor(Math.random() * 360);
+            return `hsl(${hue}, 100%, 95%)`;
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            document.body.style.backgroundColor = pastelColor();
+        });
+    </script>
 </head>
-<body class="bg-gray-50 p-8 text-gray-800 font-sans">
-    <div class="max-w-xl mx-auto bg-white shadow-xl rounded-xl p-8">
+<body class="p-8 text-gray-800 font-sans">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-8">
         <h1 class="text-3xl font-bold mb-6 text-center">Wypełnij formularz i posłuchaj historii</h1>
         <form id="storyForm" class="space-y-4">
             <div>
