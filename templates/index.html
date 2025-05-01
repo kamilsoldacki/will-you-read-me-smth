@@ -13,7 +13,7 @@
     <script>
         function pastelColor() {
             const hue = Math.floor(Math.random() * 360);
-            return `hsl(${hue}, 100%, 95%)`;
+            return `hsl(${hue}, 100%, 98%)`;
         }
         document.addEventListener("DOMContentLoaded", () => {
             document.body.style.backgroundColor = pastelColor();
@@ -49,17 +49,18 @@
                 <textarea name="q5" required class="w-full p-2 border rounded"
                     placeholder="Np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś, znajdują skarb, ratują świat przed AI"></textarea>
             </div>
-            <button type="submit" class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Generuj historię</button>
+            <button type="submit" class="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✨ Generuj historię ✨</button>
         </form>
 
-        <div id="loading" style="display:none;" class="mt-6 text-center text-gray-600">
-            ✨ Tworzymy Twoją historię... to może potrwać kilkanaście sekund...
+        <div id="loading" style="display:none;" class="mt-8 text-center text-purple-700 font-semibold text-lg animate-pulse">
+            ✨🪄 Trwa tworzenie Twojej audiobajki... Dzieje się magia! ✨<br>
+            ⏳ Prosimy o chwilę cierpliwości – już za moment historia ożyje głosem...
         </div>
+    </div>
 
-        <div id="player" style="display:none;" class="mt-8">
-            <h2 class="text-xl font-bold mb-2">Twoja historia:</h2>
-            <audio id="audio" controls class="w-full"></audio>
-        </div>
+    <div id="player" style="display:none;" class="mt-12 max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 text-center">
+        <h2 class="text-xl font-bold mb-4">Twoja historia jest gotowa! 🎧</h2>
+        <audio id="audio" controls class="w-full"></audio>
     </div>
 
     <script src="/static/script.js"></script>
