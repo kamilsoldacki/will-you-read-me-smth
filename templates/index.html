@@ -1,58 +1,65 @@
 <!DOCTYPE html>
 <html lang="pl">
 <head>
-    <meta charset="UTF-8">
-    <title>Twoja Historia</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            font-size: 80%;
-            font-family: 'Inter', sans-serif;
-            background-color: #f9fafb;
-        }
-        textarea::placeholder {
-            color: #999;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Twoja Historia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-size: 80%;
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb;
+    }
+    textarea::placeholder {
+      color: #999;
+    }
+  </style>
 </head>
 <body class="text-gray-900">
-    <div class="max-w-2xl mx-auto px-4 py-12">
-        <h1 class="text-2xl font-semibold mb-8 text-center">Wypełnij formularz i posłuchaj swojej historii</h1>
-        <form id="storyForm" class="space-y-6">
-            <div>
-                <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
-                <textarea name="q1" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. zaczarowany las, biuro robotów, planeta Grzybolandia..."></textarea>
-            </div>
-            <div>
-                <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
-                <textarea name="q2" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. Twoje imię, znajomi, pluszaki, postacie z gier..."></textarea>
-            </div>
-            <div>
-                <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
-                <textarea name="q3" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. przyjaźń, magia, tajemnica, odwaga, walka ze strachem..."></textarea>
-            </div>
-            <div>
-                <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
-                <textarea name="q4" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. teleportacja, rozmowa ze zwierzętami, nadludzka siła..."></textarea>
-            </div>
-            <div>
-                <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
-                <textarea name="q5" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. pokonują złoczyńcę, ratują świat, znajdują ukryty skarb..."></textarea>
-            </div>
-            <button type="submit" class="w-full border border-gray-300 py-2 rounded hover:bg-gray-100 transition">Generuj historię</button>
-        </form>
-
-        <div id="loading" style="display:none;" class="mt-8 text-center text-gray-500 italic">
-            Trwa tworzenie Twojej historii... prosimy o chwilę cierpliwości.
+  <div class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white ring-1 ring-gray-200 rounded-xl shadow-sm max-w-2xl w-full p-8">
+      <div class="text-center mb-8">
+        <h1 class="text-3xl font-light tracking-wide mb-2">Twoja opowieść zaczyna się tutaj</h1>
+        <p class="text-sm text-gray-500">Wypełnij pola poniżej, a za chwilę usłyszysz wyjątkową historię.</p>
+        <div class="h-px bg-gray-200 mt-4 mb-1 w-16 mx-auto"></div>
+      </div>
+      <form id="storyForm" class="space-y-6">
+        <div>
+          <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
+          <textarea name="q1" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. zaczarowany las, biuro robotów, planeta Grzybolandia..."></textarea>
         </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
+          <textarea name="q2" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. Twoje imię, znajomi, pluszaki, postacie z gier..."></textarea>
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
+          <textarea name="q3" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. przyjaźń, magia, tajemnica, odwaga, walka ze strachem..."></textarea>
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
+          <textarea name="q4" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. teleportacja, rozmowa ze zwierzętami, nadludzka siła..."></textarea>
+        </div>
+        <div>
+          <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
+          <textarea name="q5" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. pokonują złoczyńcę, ratują świat, znajdują ukryty skarb..."></textarea>
+        </div>
+        <button type="submit" class="w-full py-2 border border-gray-300 rounded hover:bg-gray-50 transition text-sm font-medium">
+          ▶️ Generuj historię
+        </button>
+      </form>
+      <div id="loading" style="display:none;" class="mt-8 text-center text-gray-500 italic">
+        Trwa tworzenie Twojej historii... prosimy o chwilę cierpliwości.
+      </div>
     </div>
+  </div>
 
-    <div id="player" style="display:none;" class="max-w-2xl mx-auto px-4 pt-12 text-center">
-        <h2 class="text-lg font-medium mb-4">Twoja historia jest gotowa:</h2>
-        <audio id="audio" controls class="w-full"></audio>
-    </div>
+  <div id="player" style="display:none;" class="max-w-2xl mx-auto px-4 pt-12 text-center">
+    <h2 class="text-lg font-medium mb-4">Twoja historia jest gotowa:</h2>
+    <audio id="audio" controls class="w-full"></audio>
+  </div>
 
-    <script src="/static/script.js"></script>
+  <script src="/static/script.js"></script>
 </body>
 </html>
