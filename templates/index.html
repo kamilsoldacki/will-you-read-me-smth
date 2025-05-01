@@ -3,63 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <title>Twoja Historia</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
             font-size: 80%;
-            transition: background-color 1s ease;
+            font-family: 'Inter', sans-serif;
+            background-color: #f9fafb;
+        }
+        textarea::placeholder {
+            color: #999;
         }
     </style>
-    <script>
-        function pastelColor() {
-            const hue = Math.floor(Math.random() * 360);
-            return `hsl(${hue}, 100%, 98%)`;
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-            document.body.style.backgroundColor = pastelColor();
-        });
-    </script>
 </head>
-<body class="p-8 text-gray-800 font-sans">
-    <div class="max-w-4xl mx-auto bg-white shadow-xl rounded-xl p-8">
-        <h1 class="text-3xl font-bold mb-6 text-center">Wypełnij formularz i posłuchaj historii</h1>
-        <form id="storyForm" class="space-y-4">
+<body class="text-gray-900">
+    <div class="max-w-2xl mx-auto px-4 py-12">
+        <h1 class="text-2xl font-semibold mb-8 text-center">Wypełnij formularz i posłuchaj swojej historii</h1>
+        <form id="storyForm" class="space-y-6">
             <div>
-                <label class="font-semibold block">1. Gdzie rozgrywa się akcja historii?</label>
-                <textarea name="q1" required class="w-full p-2 border rounded"
-                    placeholder="Np. zaczarowany las, Twoje mieszkanie, biuro pełne robotów, odległa planeta, podwodna kraina albo ukryte miasto w piwnicy Nowego Jorku – sky is the limit!"></textarea>
+                <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
+                <textarea name="q1" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. zaczarowany las, biuro robotów, planeta Grzybolandia..."></textarea>
             </div>
             <div>
-                <label class="font-semibold block">2. Jak nazywają się główni bohaterowie?</label>
-                <textarea name="q2" required class="w-full p-2 border rounded"
-                    placeholder="Np. Twoje imię, imiona znajomych, domowników, ukochanych pluszaków lub ulubionych postaci z gier"></textarea>
+                <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
+                <textarea name="q2" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. Twoje imię, znajomi, pluszaki, postacie z gier..."></textarea>
             </div>
             <div>
-                <label class="font-semibold block">3. Jaki jest motyw przewodni historii?</label>
-                <textarea name="q3" required class="w-full p-2 border rounded"
-                    placeholder="Np. odwaga, przyjaźń, magia, wielka tajemnica, walka ze strachem lub szalona przygoda"></textarea>
+                <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
+                <textarea name="q3" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. przyjaźń, magia, tajemnica, odwaga, walka ze strachem..."></textarea>
             </div>
             <div>
-                <label class="font-semibold block">4. Czy bohaterowie mają jakieś supermoce?</label>
-                <textarea name="q4" required class="w-full p-2 border rounded"
-                    placeholder="Np. niewidzialność, podróże w czasie, rozmowa ze zwierzętami, kontrola pogody, nadludzka siła, teleportacja"></textarea>
+                <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
+                <textarea name="q4" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. teleportacja, rozmowa ze zwierzętami, nadludzka siła..."></textarea>
             </div>
             <div>
-                <label class="font-semibold block">5. Co bohaterowie robią w tej historii?</label>
-                <textarea name="q5" required class="w-full p-2 border rounded"
-                    placeholder="Np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś, znajdują skarb, ratują świat przed AI"></textarea>
+                <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
+                <textarea name="q5" required class="w-full p-2 border border-gray-300 rounded focus:outline-none focus:ring focus:border-black" placeholder="Np. pokonują złoczyńcę, ratują świat, znajdują ukryty skarb..."></textarea>
             </div>
-            <button type="submit" class="mt-4 w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">✨ Generuj historię ✨</button>
+            <button type="submit" class="w-full border border-gray-300 py-2 rounded hover:bg-gray-100 transition">Generuj historię</button>
         </form>
 
-        <div id="loading" style="display:none;" class="mt-8 text-center text-purple-700 font-semibold text-lg animate-pulse">
-            ✨🪄 Trwa tworzenie Twojej audiobajki... Dzieje się magia! ✨<br>
-            ⏳ Prosimy o chwilę cierpliwości – już za moment historia ożyje głosem...
+        <div id="loading" style="display:none;" class="mt-8 text-center text-gray-500 italic">
+            Trwa tworzenie Twojej historii... prosimy o chwilę cierpliwości.
         </div>
     </div>
 
-    <div id="player" style="display:none;" class="mt-12 max-w-4xl mx-auto bg-white shadow-lg rounded-xl p-6 text-center">
-        <h2 class="text-xl font-bold mb-4">Twoja historia jest gotowa! 🎧</h2>
+    <div id="player" style="display:none;" class="max-w-2xl mx-auto px-4 pt-12 text-center">
+        <h2 class="text-lg font-medium mb-4">Twoja historia jest gotowa:</h2>
         <audio id="audio" controls class="w-full"></audio>
     </div>
 
