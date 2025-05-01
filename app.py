@@ -8,6 +8,8 @@ app = Flask(__name__)
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY")
 ELEVENLABS_API_KEY = os.environ.get("ELEVENLABS_API_KEY")
 
+client = openai.OpenAI(api_key=OPENAI_API_KEY)
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -30,12 +32,11 @@ Rezultatem powinna być jedynie niesamowita opowieść. Bez tytułu, bez komenta
 Używaj tylko słownych zapisów dla wszystkich liczb. Sprawdź poprawność językową.
 """
 
-    response = openai.ChatCompletion.create(
+    chat_response = client.chat.completions.create(
         model="gpt-4o",
         messages=[{"role": "user", "content": prompt}],
-        api_key=OPENAI_API_KEY
     )
-    story = response.choices[0].message.content.strip()
+    story = chat_response.choices[0].message.content.strip()
 
     voice_id = "PGHueutSNSctZ8jQHpoH"
     model_id = "eleven_multilingual_v2"
@@ -62,8 +63,6 @@ Używaj tylko słownych zapisów dla wszystkich liczb. Sprawdź poprawność ję
         f.write(tts_response.content)
 
     return jsonify({"audio_url": "/static/story.mp3"})
-
-import os
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
