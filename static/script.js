@@ -1,6 +1,7 @@
 document.getElementById("storyForm").addEventListener("submit", async function(e) {
     e.preventDefault();
     const form = e.target;
+    const loading = document.getElementById("loading");
 
     const data = {
         q1: form.q1.value,
@@ -9,6 +10,8 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
         q4: form.q4.value,
         q5: form.q5.value
     };
+
+    loading.style.display = "block";
 
     try {
         const response = await fetch("/generate", {
@@ -33,5 +36,7 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
     } catch (error) {
         console.error("Błąd podczas wysyłania żądania:", error);
         alert("Coś poszło nie tak.");
+    } finally {
+        loading.style.display = "none";
     }
 });
