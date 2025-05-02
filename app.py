@@ -72,3 +72,6 @@ Sprawdź poprawność językową, odmianę i inne aspekty języka polskiego.
     print("Długość audio:", len(audio_base64))
 
     return jsonify({"audio_base64": audio_base64})
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0", port=10000, debug=True)
