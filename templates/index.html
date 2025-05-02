@@ -2,62 +2,80 @@
 <html lang="pl">
 <head>
   <meta charset="UTF-8" />
-  <title>Twoja Opowieść</title>
-  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600&display=swap" rel="stylesheet" />
+  <title>Twoja Bajka</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     body {
+      font-family: 'Inter', sans-serif;
       font-size: 85%;
-      font-family: 'Quicksand', sans-serif;
-      background-color: #FFF8F2;
+      background-color: #fafafa;
     }
     textarea::placeholder {
-      color: #b28f78;
+      color: #888;
+    }
+    #player {
+      opacity: 0;
+      transform: translateY(8px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+    }
+    #player.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
-<body class="text-[#3d2e1e]">
+<body class="text-gray-800">
   <div class="min-h-screen flex items-center justify-center px-4">
-    <div class="bg-white ring-1 ring-[#ffe6cc] rounded-2xl shadow-lg max-w-xl w-full p-8">
-      <div class="text-center mb-8">
-        <h1 class="text-3xl font-semibold mb-2 text-[#d2773c]">📖 Gotowi na przygodę?</h1>
-        <p class="text-sm text-[#a26d4f]">Wypełnij pola poniżej, a za chwilę usłyszysz wyjątkową historię.</p>
+    <div class="bg-white ring-1 ring-gray-100 shadow-sm rounded-xl max-w-3xl w-full p-10">
+      <div class="text-center mb-10">
+        <h1 class="text-3xl font-semibold text-gray-900 mb-2">📚 Stwórz swoją bajkę</h1>
+        <p class="text-sm text-gray-500">Wypełnij formularz, a my wygenerujemy Twoją opowieść i przeczytamy ją głosem.</p>
       </div>
       <form id="storyForm" class="space-y-6">
         <div>
           <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
-          <textarea name="q1" required class="w-full p-3 border border-[#ffe6cc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffbe7b]" placeholder="Np. zaczarowany las, miasto w chmurach, podwodna kraina..."></textarea>
+          <textarea name="q1" required class="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-black" placeholder="Np. zaczarowany las, miasto w chmurach, podwodna kraina..."></textarea>
         </div>
         <div>
           <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
-          <textarea name="q2" required class="w-full p-3 border border-[#ffe6cc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffbe7b]" placeholder="Np. Ty, Twoi bliscy, pluszaki lub bohaterowie z bajek..."></textarea>
+          <textarea name="q2" required class="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-black" placeholder="Np. Ty, Twoi bliscy, pluszaki lub bohaterowie z bajek..."></textarea>
         </div>
         <div>
           <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
-          <textarea name="q3" required class="w-full p-3 border border-[#ffe6cc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffbe7b]" placeholder="Np. przyjaźń, odwaga, odkrywanie tajemnic, magia..."></textarea>
+          <textarea name="q3" required class="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-black" placeholder="Np. przyjaźń, odwaga, odkrywanie tajemnic, magia..."></textarea>
         </div>
         <div>
           <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
-          <textarea name="q4" required class="w-full p-3 border border-[#ffe6cc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffbe7b]" placeholder="Np. latanie, mówienie ze zwierzętami, cofanie czasu..."></textarea>
+          <textarea name="q4" required class="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-black" placeholder="Np. latanie, mówienie ze zwierzętami, cofanie czasu..."></textarea>
         </div>
         <div>
           <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
-          <textarea name="q5" required class="w-full p-3 border border-[#ffe6cc] rounded-lg focus:outline-none focus:ring-2 focus:ring-[#ffbe7b]" placeholder="Np. ratują przyjaciela, pokonują strach, wyruszają w podróż..."></textarea>
+          <textarea name="q5" required class="w-full p-3 border border-gray-200 rounded-md focus:outline-none focus:ring focus:ring-black" placeholder="Np. ratują przyjaciela, pokonują strach, wyruszają w podróż..."></textarea>
         </div>
-        <button type="submit" class="w-full py-3 bg-[#ffbe7b] text-white font-semibold rounded-lg hover:bg-[#ffa94d] transition">✨ Opowiedz mi historię</button>
+        <button type="submit" class="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-800 transition">✨ Wygeneruj opowieść</button>
       </form>
 
-      <div id="loading" style="display:none;" class="mt-6 text-center text-[#a26d4f] italic">
-        ✨ Tworzymy Twoją magiczną historię... bajka już powstaje 🧚‍♀️
+      <div id="loading" style="display:none;" class="mt-8 text-center text-sm text-gray-500 italic">
+        ✨ Bajka właśnie powstaje... prosimy o chwilkę cierpliwości.
       </div>
 
-      <div id="player" style="display:none;" class="mt-8 text-center">
-        <h2 class="text-base font-medium mb-3 text-[#a26d4f]">🎧 Posłuchaj swojej bajki:</h2>
-        <audio id="audio" controls class="w-full rounded-lg shadow"></audio>
+      <div id="player" class="mt-10 text-center">
+        <h2 class="text-base font-medium mb-3 text-gray-700">🎧 Posłuchaj swojej bajki:</h2>
+        <audio id="audio" controls class="w-full rounded-md shadow-sm"></audio>
       </div>
     </div>
   </div>
 
+  <script>
+    const player = document.getElementById("player");
+    function showPlayer() {
+      player.style.display = "block";
+      setTimeout(() => {
+        player.classList.add("visible");
+      }, 10);
+    }
+  </script>
   <script src="/static/script.js"></script>
 </body>
 </html>
