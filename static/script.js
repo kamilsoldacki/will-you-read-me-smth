@@ -28,11 +28,12 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
             const audio = document.getElementById("audio");
             audio.src = "data:audio/mpeg;base64," + result.audio_base64;
             document.getElementById("storyForm").style.display = "none";
-            document.getElementById("player").style.display = "block";
+            showPlayer();  // <-- to pokazuje player z animacją
         } else {
             alert("Wystąpił problem z generowaniem audio.");
             console.error(result);
         }
+
     } catch (error) {
         console.error("Błąd podczas wysyłania żądania:", error);
         alert("Coś poszło nie tak.");
