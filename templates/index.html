@@ -56,8 +56,12 @@
         <button type="submit" class="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-800 transition text-sm">✨ Wygeneruj opowieść</button>
       </form>
 
-      <div id="loading" style="display:none;" class="mt-6 text-center text-sm text-gray-500 italic">
-        ✨ Bajka właśnie powstaje... prosimy o chwilkę cierpliwości.
+      <div id="loadingBarContainer" style="display:none;" class="mt-6 text-center text-sm text-gray-700">
+  <p class="mb-3">✨ Tworzymy Twoją bajkę... To może chwilkę potrwać.</p>
+  <div class="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+    <div id="loadingBar" class="bg-black h-full w-0 transition-all duration-100"></div>
+  </div>
+  <p id="loadingPercent" class="mt-2 text-xs text-gray-500">0%</p>
       </div>
 
       <div id="player" class="mt-8 text-center">
