@@ -12,10 +12,10 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
 
     // Ukryj formularz i pokaż pasek ładowania
     form.style.display = "none";
-    const loadingContainer = document.getElementById("loadingBarContainer");
+    const loadingBarContainer = document.getElementById("loadingBarContainer");
     const loadingBar = document.getElementById("loadingBar");
     const loadingPercent = document.getElementById("loadingPercent");
-    loadingContainer.style.display = "block";
+    loadingBarContainer.style.display = "block";
 
     let current = 0;
     const max = 96;
@@ -45,7 +45,7 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
         const timeRemaining = Math.max(0, duration - current * interval);
 
         setTimeout(() => {
-            loadingContainer.style.display = "none";
+            loadingBarContainer.style.display = "none";
 
             if (result.audio_base64) {
                 const audio = document.getElementById("audio");
@@ -61,7 +61,7 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
         console.error("Błąd podczas wysyłania żądania:", error);
         alert("Coś poszło nie tak.");
         form.style.display = "block";
-        loadingContainer.style.display = "none";
+        loadingBarContainer.style.display = "none";
     }
 });
 
