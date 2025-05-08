@@ -41,10 +41,11 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     if (!loadingBar || !audio || !player) {
-      console.error("Brakuje jednego z wymaganych elementów");
+      console.error("Brakuje jednego z wymaganych elementÃ³w");
       return;
     }
 
+    form.style.display = "none"; // ukryj formularz
     loadingBar.style.display = "block";
     player.classList.remove("visible");
     player.style.display = "none";
@@ -66,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Błąd po stronie serwera");
+      if (!response.ok) throw new Error("BÅÄd po stronie serwera");
 
       const result = await response.json();
 
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 10);
     } catch (err) {
       loadingBar.style.display = "none";
-      alert("Wystąpił błąd podczas generowania bajki.");
+      alert("WystÄpiÅ bÅÄd podczas generowania bajki.");
       console.error(err);
     }
   });
