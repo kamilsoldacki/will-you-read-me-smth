@@ -65,6 +65,8 @@ document.getElementById("storyForm").addEventListener("submit", async function(e
     }
 });
 
+// Multi-step logic
+
 document.addEventListener("DOMContentLoaded", () => {
   const steps = document.querySelectorAll(".step");
   const prevBtn = document.getElementById("prevBtn");
@@ -83,22 +85,24 @@ document.addEventListener("DOMContentLoaded", () => {
     stepIndicator.textContent = `Krok ${index + 1} z ${steps.length}`;
   }
 
-  prevBtn.addEventListener("click", () => {
-    if (currentStep > 0) {
-      currentStep--;
-      showStep(currentStep);
-    }
-  });
+  if (prevBtn && nextBtn && submitBtn && stepIndicator) {
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
 
-  nextBtn.addEventListener("click", () => {
-    const textarea = steps[currentStep].querySelector("textarea");
-    if (textarea && textarea.checkValidity()) {
-      currentStep++;
-      showStep(currentStep);
-    } else {
-      textarea.reportValidity();
-    }
-  });
+    nextBtn.addEventListener("click", () => {
+      const textarea = steps[currentStep].querySelector("textarea");
+      if (textarea && textarea.checkValidity()) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        textarea.reportValidity();
+      }
+    });
 
-  showStep(currentStep);
+    showStep(currentStep);
+  }
 });
