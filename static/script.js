@@ -1,48 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  // Multi-step logic
-  const steps = document.querySelectorAll(".step");
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  const submitBtn = document.getElementById("submitBtn");
-  const stepIndicator = document.getElementById("step-indicator");
-  let currentStep = 0;
-
-  function showStep(index) {
-    steps.forEach((step, i) => {
-      step.classList.toggle("hidden", i !== index);
-    });
-    prevBtn.classList.toggle("hidden", index === 0);
-    nextBtn.classList.toggle("hidden", index === steps.length - 1);
-    submitBtn.classList.toggle("hidden", index !== steps.length - 1);
-    stepIndicator.textContent = `Krok ${index + 1} z ${steps.length}`;
-  }
-
-  if (prevBtn && nextBtn && submitBtn && stepIndicator) {
-    prevBtn.addEventListener("click", () => {
-      if (currentStep > 0) {
-        currentStep--;
-        showStep(currentStep);
-      }
-    });
-
-    nextBtn.addEventListener("click", () => {
-      const textarea = steps[currentStep].querySelector("textarea");
-      if (textarea && textarea.checkValidity()) {
-        currentStep++;
-        showStep(currentStep);
-      } else {
-        textarea.reportValidity();
-      }
-    });
-
-    showStep(currentStep);
-  }
-
-  // Obsługa wysyłki formularza
-  const form = document.getElementById("storyForm");
-  if (form) {
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault();
+document.getElementById("storyForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
     const form = e.target;
 
     const data = {
@@ -80,8 +37,72 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
-            } catch (e) { console.error(e); },
+            },
             body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        const timeRemaining = Math.max(0, duration - current * interval);
+
+        setTimeout(() => {
+            loadingContainer.style.display = "none";
+
+            if (result.audio_base64) {
+                const audio = document.getElementById("audio");
+                audio.src = "data:audio/mpeg;base64," + result.audio_base64;
+                showPlayer();
+            } else {
+                alert("Wystąpił problem z generowaniem audio.");
+                console.error(result);
+            }
+        }, timeRemaining);
+
+    } catch (error) {
+        console.error("Błąd podczas wysyłania żądania:", error);
+        alert("Coś poszło nie tak.");
+        form.style.display = "block";
+        loadingContainer.style.display = "none";
+    }
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const steps = document.querySelectorAll(".step");
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const submitBtn = document.getElementById("submitBtn");
+  const stepIndicator = document.getElementById("step-indicator");
+  let currentStep = 0;
+
+  function showStep(index) {
+    steps.forEach((step, i) => {
+      step.classList.toggle("hidden", i !== index);
     });
+    prevBtn.classList.toggle("hidden", index === 0);
+    nextBtn.classList.toggle("hidden", index === steps.length - 1);
+    submitBtn.classList.toggle("hidden", index !== steps.length - 1);
+    if (stepIndicator) {
+      stepIndicator.textContent = `Krok ${index + 1} z ${steps.length}`;
+    }
+  }
+
+  if (prevBtn && nextBtn && submitBtn && steps.length > 0) {
+    prevBtn.addEventListener("click", () => {
+      if (currentStep > 0) {
+        currentStep--;
+        showStep(currentStep);
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      const textarea = steps[currentStep].querySelector("textarea");
+      if (textarea && textarea.checkValidity()) {
+        currentStep++;
+        showStep(currentStep);
+      } else {
+        textarea.reportValidity();
+      }
+    });
+
+    showStep(currentStep);
   }
 });
