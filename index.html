@@ -65,7 +65,15 @@
           </div>
         </div>
       </form>
-      <div id="player" class="mt-8 text-center">
+      
+<div id="loadingBarContainer" style="display:none;">
+  <p class="text-gray-600 text-sm text-center mb-2">Generujemy Twoją bajkę...</p>
+  <div class="w-full bg-gray-200 rounded-full h-2.5">
+    <div class="bg-black h-2.5 rounded-full animate-pulse w-1/2"></div>
+  </div>
+</div>
+
+<div id="player" class="mt-8 text-center">
         <h2 class="text-sm font-medium mb-2 text-gray-700">🎧 Posłuchaj swojej bajki:</h2>
         <audio id="audio" controls class="w-full rounded-md shadow-sm"></audio>
       </div>
