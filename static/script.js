@@ -4,6 +4,11 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.getElementById("prevBtn");
   const submitBtn = document.getElementById("submitBtn");
   const stepIndicator = document.getElementById("step-indicator");
+  const form = document.getElementById("storyForm");
+  const loadingBar = document.getElementById("loadingBarContainer");
+  const player = document.getElementById("player");
+  const audio = document.getElementById("audio");
+
   let currentStep = 0;
 
   function showStep(index) {
@@ -15,6 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
     nextBtn.classList.toggle("hidden", index === steps.length - 1);
     submitBtn.classList.toggle("hidden", index !== steps.length - 1);
   }
+
+  showStep(currentStep);
 
   nextBtn.addEventListener("click", () => {
     if (currentStep < steps.length - 1) {
@@ -30,23 +37,18 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
-  showStep(currentStep);
-
-  const form = document.getElementById("storyForm");
-
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    // Pokaż pasek ładowania
-    const loadingBar = document.getElementById("loadingBarContainer");
-    loadingBar.style.display = "block";
+    if (!loadingBar || !audio || !player) {
+      console.error("Brakuje jednego z wymaganych elementów");
+      return;
+    }
 
-    // Ukryj player, jeśli był wcześniej widoczny
-    const player = document.getElementById("player");
+    loadingBar.style.display = "block";
     player.classList.remove("visible");
     player.style.display = "none";
 
-    // Zbierz dane z formularza
     const data = {
       q1: form.q1.value,
       q2: form.q2.value,
@@ -64,24 +66,22 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Błąd serwera");
+      if (!response.ok) throw new Error("Błąd po stronie serwera");
 
       const result = await response.json();
 
-      // Ukryj pasek ładowania
-      loadingBar.style.display = "none";
-
-      // Ustaw źródło audio i pokaż player
-      const audio = document.getElementById("audio");
       audio.src = result.audio_url;
       audio.load();
+
+      loadingBar.style.display = "none";
       player.style.display = "block";
+
       setTimeout(() => {
         player.classList.add("visible");
       }, 10);
     } catch (err) {
       loadingBar.style.display = "none";
-      alert("Coś poszło nie tak. Spróbuj ponownie.");
+      alert("Wystąpił błąd podczas generowania bajki.");
       console.error(err);
     }
   });
