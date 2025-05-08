@@ -33,28 +33,39 @@
         <p class="text-sm text-gray-500">Wypełnij formularz, a my wygenerujemy Twoją opowieść i przeczytamy ją głosem.</p>
       </div>
       <form id="storyForm" class="space-y-4">
-        <div>
-          <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
-          <textarea name="q1" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="Np. zaczarowany las, miasto w chmurach, podwodna kraina..."></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
-          <textarea name="q2" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="Np. Ty, Twoi bliscy, pluszaki lub bohaterowie z bajek..."></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
-          <textarea name="q3" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="Np. przyjaźń, odwaga, odkrywanie tajemnic, magia..."></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
-          <textarea name="q4" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="Np. latanie, mówienie ze zwierzętami, cofanie czasu..."></textarea>
-        </div>
-        <div>
-          <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
-          <textarea name="q5" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="Np. ratują przyjaciela, pokonują strach, wyruszają w podróż..."></textarea>
-        </div>
-        <button type="submit" class="w-full py-3 bg-black text-white font-semibold rounded-md hover:bg-gray-800 transition text-sm">✨ Wygeneruj opowieść</button>
-      </form>
+  <div id="step-indicator" class="text-sm text-gray-500 text-center mb-2">Krok 1 z 5</div>
+
+  <div class="step">
+    <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
+    <textarea name="q1" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="może to być zaczarowany las, Twoje mieszkanie, biuro pełne robotów, odległa planeta, podwodna kraina albo ukryte miasto w piwnicy Nowego Jorku - sky is the limit!"></textarea>
+  </div>
+
+  <div class="step hidden">
+    <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
+    <textarea name="q2" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="możesz podać swoje imię, imiona znajomych, domowników, ukochanych pluszaków lub... ulubionych postaci z gier"></textarea>
+  </div>
+
+  <div class="step hidden">
+    <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
+    <textarea name="q3" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="co jest sercem tej opowieści? odwaga, przyjaźń, magia, wielka tajemnica, a może walka ze strachem lub szalona przygoda?"></textarea>
+  </div>
+
+  <div class="step hidden">
+    <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
+    <textarea name="q4" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="wymyśl coś wow! niewidzialność, podróże w czasie, rozmowa ze zwierzętami, kontrola pogody, nadludzka siła, teleportacja lub cokolwiek innego, co sobie wyobrazisz"></textarea>
+  </div>
+
+  <div class="step hidden">
+    <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
+    <textarea name="q5" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś w niebezpieczeństwie, znajdują ukryty skarb - a może odkrywają ukrytą wiedzę w starożytnych danych albo ratują świat przed zbuntowaną sztuczną inteligencją"></textarea>
+  </div>
+
+  <div class="flex justify-between mt-4">
+    <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md text-sm hidden">← Wstecz</button>
+    <button type="button" id="nextBtn" class="ml-auto px-4 py-2 bg-black text-white rounded-md text-sm">Dalej →</button>
+    <button type="submit" id="submitBtn" class="ml-auto px-4 py-2 bg-black text-white rounded-md text-sm hidden">✨ Wygeneruj opowieść</button>
+  </div>
+</form>
 
       <div id="loadingBarContainer" style="display:none;" class="mt-6 text-center text-sm text-gray-700">
   <p class="mb-3">✨ Tworzymy Twoją bajkę... To może chwilkę potrwać.</p>
