@@ -41,13 +41,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Obsługa wysyłki formularza
   const form = document.getElementById("storyForm");
   if (form) {
-    form.addEventListener("submit", window.storyFormSubmit);
-  }
-});
-
-// Oryginalna funkcja submit
-window.storyFormSubmit = async function(e) async function(e) {
-    e.preventDefault();
+    form.addEventListener("submit", async function(e) {
+      e.preventDefault();
     const form = e.target;
 
     const data = {
@@ -87,28 +82,6 @@ window.storyFormSubmit = async function(e) async function(e) {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        const timeRemaining = Math.max(0, duration - current * interval);
-
-        setTimeout(() => {
-            loadingContainer.style.display = "none";
-
-            if (result.audio_base64) {
-                const audio = document.getElementById("audio");
-                audio.src = "data:audio/mpeg;base64," + result.audio_base64;
-                showPlayer();
-            } else {
-                alert("Wystąpił problem z generowaniem audio.");
-                console.error(result);
-            }
-        }, timeRemaining);
-
-    } catch (error) {
-        console.error("Błąd podczas wysyłania żądania:", error);
-        alert("Coś poszło nie tak.");
-        form.style.display = "block";
-        loadingContainer.style.display = "none";
-    }
+    });
+  }
 });
