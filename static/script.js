@@ -1,3 +1,4 @@
+
 document.addEventListener("DOMContentLoaded", function () {
   const steps = document.querySelectorAll(".step");
   const nextBtn = document.getElementById("nextBtn");
@@ -6,6 +7,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const stepIndicator = document.getElementById("step-indicator");
   const form = document.getElementById("storyForm");
   const loadingBar = document.getElementById("loadingBarContainer");
+  const loadingProgressText = document.getElementById("loadingProgressText");
+  const loadingBarFill = document.getElementById("loadingBarFill");
   const player = document.getElementById("player");
   const audio = document.getElementById("audio");
 
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    if (!loadingBar || !audio || !player) {
+    if (!loadingBar || !audio || !player || !loadingBarFill || !loadingProgressText) {
       console.error("Brakuje jednego z wymaganych elementów");
       return;
     }
@@ -49,6 +52,17 @@ document.addEventListener("DOMContentLoaded", function () {
     loadingBar.style.display = "block";
     player.classList.remove("visible");
     player.style.display = "none";
+
+    // Rozpocznij animację procentową
+    let percent = 0;
+    const progressInterval = setInterval(() => {
+      if (percent < 98) {
+        percent += Math.floor(Math.random() * 4) + 1;
+        if (percent > 98) percent = 98;
+        loadingBarFill.style.width = percent + "%";
+        loadingProgressText.textContent = `Generujemy Twoją bajkę... ${percent}%`;
+      }
+    }, 1200);
 
     const data = {
       q1: form.q1.value,
@@ -70,6 +84,8 @@ document.addEventListener("DOMContentLoaded", function () {
       const result = await response.json();
       console.log("Odpowiedź z /generate:", result);
 
+      clearInterval(progressInterval);
+
       if (!result.audio_base64 || typeof result.audio_base64 !== "string") {
         throw new Error("Nieprawidłowy audio_base64");
       }
@@ -84,9 +100,9 @@ document.addEventListener("DOMContentLoaded", function () {
         player.classList.add("visible");
       }, 10);
     } catch (err) {
+      clearInterval(progressInterval);
       loadingBar.style.display = "none";
-      alert("Wystąpił problem z generowaniem bajki. Zobacz konsolę (F12 → Console).");
-      console.error("Błąd:", err);
+      console.error("Błąd przy generowaniu:", err);
     }
   });
 });
