@@ -70,12 +70,11 @@ document.addEventListener("DOMContentLoaded", function () {
       const result = await response.json();
       console.log("Odpowiedź z /generate:", result);
 
-      // Walidacja audio_url
-      if (!result.audio_url || typeof result.audio_url !== "string") {
-        throw new Error("Nieprawidłowy audio_url");
+      if (!result.audio_base64 || typeof result.audio_base64 !== "string") {
+        throw new Error("Nieprawidłowy audio_base64");
       }
 
-      audio.src = result.audio_url;
+      audio.src = "data:audio/wav;base64," + result.audio_base64;
       audio.load();
 
       loadingBar.style.display = "none";
