@@ -34,7 +34,7 @@ body {
   max-width: 768px;
   width: 100%;
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 80px 1rem 0; /* górny padding 80px, reszta bez zmian */
 }
 
 textarea {
