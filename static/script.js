@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function () {
     steps.forEach((step, i) => {
       step.classList.toggle("hidden", i !== index);
     });
-    stepIndicator.textContent = `Krok ${index + 1} z ${steps.length}`;
+    stepIndicator.textContent = `${index + 1} z ${steps.length}`;
     prevBtn.classList.toggle("hidden", index === 0);
     nextBtn.classList.toggle("hidden", index === steps.length - 1);
     submitBtn.classList.toggle("hidden", index !== steps.length - 1);
