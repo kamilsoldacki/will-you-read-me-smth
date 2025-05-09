@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    form.style.display = "none"; // ukryj formularz
+    form.style.display = "none";
     loadingBar.style.display = "block";
     player.classList.remove("visible");
     player.style.display = "none";
@@ -67,9 +67,13 @@ document.addEventListener("DOMContentLoaded", function () {
         body: JSON.stringify(data),
       });
 
-      if (!response.ok) throw new Error("Błąd po stronie serwera");
-
       const result = await response.json();
+      console.log("Odpowiedź z /generate:", result);
+
+      // Walidacja audio_url
+      if (!result.audio_url || typeof result.audio_url !== "string") {
+        throw new Error("Nieprawidłowy audio_url");
+      }
 
       audio.src = result.audio_url;
       audio.load();
@@ -82,8 +86,8 @@ document.addEventListener("DOMContentLoaded", function () {
       }, 10);
     } catch (err) {
       loadingBar.style.display = "none";
-      alert("Wystąpił błąd podczas generowania bajki.");
-      console.error(err);
+      alert("Wystąpił problem z generowaniem bajki. Zobacz konsolę (F12 → Console).");
+      console.error("Błąd:", err);
     }
   });
 });
