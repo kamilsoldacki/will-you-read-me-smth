@@ -67,9 +67,9 @@
       </form>
       
 <div id="loadingBarContainer" style="display:none;">
-  <p class="text-gray-600 text-sm text-center mb-2">Generujemy Twoją bajkę...</p>
+  <p id="loadingProgressText" class="text-gray-600 text-sm text-center mb-2">Generujemy Twoją bajkę...</p>
   <div class="w-full bg-gray-200 rounded-full h-2.5">
-    <div class="bg-black h-2.5 rounded-full animate-pulse w-1/2"></div>
+    <div id="loadingBarFill" class="bg-black h-2.5 rounded-full w-1/2 transition-all duration-500 ease-in-out"></div>
   </div>
 </div>
 
