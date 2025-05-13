@@ -19,7 +19,13 @@ document.addEventListener("DOMContentLoaded", function () {
       step.classList.toggle("hidden", i !== index);
     });
     stepIndicator.textContent = `${index + 1} z ${steps.length}`;
-    prevBtn.classList.toggle("invisible", index === 0);
+    if (index === 0) {
+    prevBtn.classList.add("invisible");
+    prevBtn.classList.remove("hidden");
+  } else {
+    prevBtn.classList.remove("invisible");
+    prevBtn.classList.remove("hidden");
+  }
     nextBtn.classList.toggle("hidden", index === steps.length - 1);
     submitBtn.classList.toggle("hidden", index !== steps.length - 1);
   }
