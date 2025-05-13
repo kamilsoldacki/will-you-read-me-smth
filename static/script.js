@@ -106,3 +106,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+document.getElementById("startBtn").addEventListener("click", () => {
+  document.getElementById("welcome-screen").style.display = "none";
+  document.getElementById("form-wrapper").style.display = "block";
+});
