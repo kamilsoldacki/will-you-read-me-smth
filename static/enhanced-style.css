@@ -40,3 +40,8 @@ textarea {
   min-height: 320px;
   resize: none;
 }
+
+.step {
+  width: 100%;
+}
+
