@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Twoja Bajka</title>
+  <title>papa.ninja</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/enhanced-style.css">
   <style>
     body {
       font-family: 'Inter', sans-serif;
@@ -26,67 +27,68 @@
       opacity: 1;
       transform: translateY(0);
     }
-  </style>
+    .step { width: 100%; }
+</style>
 </head>
 <body class="text-gray-800">
+  <div id="branding">papa.ninja</div>
   <div class="max-w-3xl mx-auto px-4 py-6">
     <div class="w-full p-6 sm:p-8">
-      <div class="text-center mb-6">
-        <p class="text-sm text-gray-500">Wypełnij formularz, a my wygenerujemy Twoją opowieść i przeczytamy ją głosem.</p>
+
+      <div id="welcome-screen" class="text-sm text-gray-700 py-20">
+        <p class="mb-4">Papa Ninja, zanim zaczniemy... kliknij poniżej, a razem stworzymy coś wyjątkowego.</p>
+        <div class="text-right">
+          <button id="startBtn" class="px-6 py-2 bg-black text-white rounded-md text-sm">Papa Ninja, opowiedz mi coś...</button>
+        </div>
       </div>
-      <form id="storyForm" class="space-y-4 w-full max-w-3xl mx-auto">
-        <div class="step">
-          <label class="block mb-1 text-sm font-medium">1. Gdzie rozgrywa się akcja historii?</label>
-          <textarea name="q1" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="może to być zaczarowany las, Twoje mieszkanie, biuro pełne robotów, odległa planeta, podwodna kraina albo ukryte miasto w piwnicy Nowego Jorku - sky is the limit!" class="min-h-[120px] resize-none" name="q1" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="może to być zaczarowany las, Twoje mieszkanie, biuro pełne robotów, odległa planeta, podwodna kraina albo ukryte miasto w piwnicy Nowego Jorku - sky is the limit!" style="resize: none;"></textarea>
-        </div>
-        <div class="step hidden">
-          <label class="block mb-1 text-sm font-medium">2. Jak nazywają się główni bohaterowie?</label>
-          <textarea name="q2" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="możesz podać swoje imię, imiona znajomych, domowników, ukochanych pluszaków lub... ulubionych postaci z gier" class="min-h-[120px] resize-none" name="q2" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="możesz podać swoje imię, imiona znajomych, domowników, ukochanych pluszaków lub... ulubionych postaci z gier" style="resize: none;"></textarea>
-        </div>
-        <div class="step hidden">
-          <label class="block mb-1 text-sm font-medium">3. Jaki jest motyw przewodni historii?</label>
-          <textarea name="q3" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="co jest sercem tej opowieści? odwaga, przyjaźń, magia, wielka tajemnica, a może walka ze strachem lub szalona przygoda?" class="min-h-[120px] resize-none" name="q3" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="co jest sercem tej opowieści? odwaga, przyjaźń, magia, wielka tajemnica, a może walka ze strachem lub szalona przygoda?" style="resize: none;"></textarea>
-        </div>
-        <div class="step hidden">
-          <label class="block mb-1 text-sm font-medium">4. Czy bohaterowie mają jakieś supermoce?</label>
-          <textarea name="q4" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="wymyśl coś wow! niewidzialność, podróże w czasie, rozmowa ze zwierzętami, kontrola pogody, nadludzka siła, teleportacja lub cokolwiek innego, co sobie wyobrazisz" class="min-h-[120px] resize-none" name="q4" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="wymyśl coś wow! niewidzialność, podróże w czasie, rozmowa ze zwierzętami, kontrola pogody, nadludzka siła, teleportacja lub cokolwiek innego, co sobie wyobrazisz" style="resize: none;"></textarea>
-        </div>
-        <div class="step hidden">
-          <label class="block mb-1 text-sm font-medium">5. Co bohaterowie robią w tej historii?</label>
-          <textarea name="q5" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś w niebezpieczeństwie, znajdują ukryty skarb - a może odkrywają ukrytą wiedzę w starożytnych danych albo ratują świat przed zbuntowaną sztuczną inteligencją" class="min-h-[120px] resize-none" name="q5" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś w niebezpieczeństwie, znajdują ukryty skarb - a może odkrywają ukrytą wiedzę w starożytnych danych albo ratują świat przed zbuntowaną sztuczną inteligencją" style="resize: none;"></textarea>
-        </div>
-        <div class="flex justify-between items-center mt-4">
-          <div id="step-indicator" class="text-sm text-gray-500">Krok 1 z 5</div>
-          <div class="ml-auto space-x-2">
-            <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md text-sm hidden">← Wstecz</button>
-            <button type="button" id="nextBtn" class="px-4 py-2 bg-black text-white rounded-md text-sm">Dalej →</button>
-            <button type="submit" id="submitBtn" class="px-4 py-2 bg-black text-white rounded-md text-sm hidden">✨ Wygeneruj opowieść</button>
+
+      <div id="form-wrapper" style="display:none;">
+        <form id="storyForm" class="space-y-4">
+          <div class="step">
+            <label class="block mb-1 text-sm font-medium">Gdzie rozgrywa się akcja historii?</label>
+            <textarea name="q1" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="może to być zaczarowany las, Twoje mieszkanie, biuro pełne robotów, odległa planeta, podwodna kraina albo ukryte miasto w piwnicy Nowego Jorku - sky is the limit!"></textarea>
           </div>
+          <div class="step hidden">
+            <label class="block mb-1 text-sm font-medium">Jak nazywają się główni bohaterowie?</label>
+            <textarea name="q2" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="możesz podać swoje imię, imiona znajomych, domowników, ukochanych pluszaków lub... ulubionych postaci z gier"></textarea>
+          </div>
+          <div class="step hidden">
+            <label class="block mb-1 text-sm font-medium">Jaki jest motyw przewodni historii?</label>
+            <textarea name="q3" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="co jest sercem tej opowieści? odwaga, przyjaźń, magia, wielka tajemnica, a może walka ze strachem lub szalona przygoda?"></textarea>
+          </div>
+          <div class="step hidden">
+            <label class="block mb-1 text-sm font-medium">Czy bohaterowie mają jakieś supermoce?</label>
+            <textarea name="q4" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="wymyśl coś wow! niewidzialność, podróże w czasie, rozmowa ze zwierzętami, kontrola pogody, nadludzka siła, teleportacja lub cokolwiek innego, co sobie wyobrazisz"></textarea>
+          </div>
+          <div class="step hidden">
+            <label class="block mb-1 text-sm font-medium">Co bohaterowie robią w tej historii?</label>
+            <textarea name="q5" required class="w-full p-3 border border-gray-200 rounded-md text-sm focus:outline-none focus:ring focus:ring-black" placeholder="np. wyruszają na wyprawę, rozwiązują zagadkę, pokonują złoczyńcę, odkrywają nowy świat, ratują kogoś w niebezpieczeństwie, znajdują ukryty skarb - a może odkrywają ukrytą wiedzę w starożytnych danych albo ratują świat przed zbuntowaną sztuczną inteligencją"></textarea>
+          </div>
+          <div class="flex justify-between items-center mt-4">
+            <div id="step-indicator" class="text-sm text-gray-500">1 z 5</div>
+            <div class="ml-auto space-x-2">
+              <button type="button" id="prevBtn" class="px-4 py-2 bg-gray-200 text-gray-800 rounded-md text-sm hidden">← Wstecz</button>
+              <button type="button" id="nextBtn" class="px-4 py-2 bg-black text-white rounded-md text-sm">Dalej →</button>
+              <button type="submit" id="submitBtn" class="px-4 py-2 bg-black text-white rounded-md text-sm hidden">Wygeneruj</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div id="loadingBarContainer" style="display:none;">
+        <p id="loadingProgressText" class="text-gray-600 text-sm text-center mb-2">Generujemy Twoją bajkę... 0%</p>
+        <div class="w-full bg-gray-200 rounded-full h-2.5">
+          <div id="loadingBarFill" class="bg-black h-2.5 rounded-full transition-all duration-500 ease-in-out" style="width: 0%;"></div>
         </div>
-      </form>
+      </div>
 
-<div id="loadingBarContainer" style="display:none;">
-  <p id="loadingProgressText" class="text-gray-600 text-sm text-center mb-2">Generujemy Twoją bajkę...</p>
-  <div class="w-full bg-gray-200 rounded-full h-2.5">
-    <div id="loadingBarFill" class="bg-black h-2.5 rounded-full transition-all duration-500 ease-in-out" style="width: 0%;"></div>
-  </div>
-</div>
-
-<div id="player" class="mt-8 text-center">
-  <h2 class="text-sm font-medium mb-2 text-gray-700">Posłuchaj swojej bajki:</h2>
-  <audio id="audio" controls class="w-full rounded-md shadow-sm"></audio>
-</div>
+      <div id="player" class="mt-8 text-center">
+        <h2 class="text-sm font-medium mb-2 text-gray-700">Posłuchaj swojej bajki:</h2>
+        <audio id="audio" controls class="w-full rounded-md shadow-sm"></audio>
+      </div>
     </div>
   </div>
-  <script>
-    const player = document.getElementById("player");
-    function showPlayer() {
-      player.style.display = "block";
-      setTimeout(() => {
-        player.classList.add("visible");
-      }, 10);
-    }
-  </script>
-  <script src="/static/script.js"></script>
+  <script src="/static/script.js" defer></script>
+  <div id="footer">© 2025 papa.ninja</div>
 </body>
 </html>
