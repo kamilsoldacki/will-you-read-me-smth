@@ -88,7 +88,15 @@ const messageInterval = setInterval(() => {
   loadingProgressText.textContent = loadingMessages[messageIndex];
 }, 3000); // co 3 sekundy
 
+const progressInterval = setInterval(() => {
+  if (percent < 98) {
+    percent += Math.floor(Math.random() * 4) + 1;
+    if (percent > 98) percent = 98;
+    loadingBarFill.style.width = percent + "%";
+  }
+}, 1200);
 
+// <-- TU DOPIERO zaczyna się fetch
 
     const data = {
       q1: form.q1.value,
@@ -111,6 +119,7 @@ const messageInterval = setInterval(() => {
       console.log("Odpowiedź z /generate:", result);
 
       clearInterval(progressInterval);
+      clearInterval(messageInterval);
 
       if (!result.audio_base64 || typeof result.audio_base64 !== "string") {
         throw new Error("Nieprawidłowy audio_base64");
