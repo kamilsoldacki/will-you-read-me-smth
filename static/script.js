@@ -84,7 +84,10 @@ let messageIndex = 0;
 loadingProgressText.textContent = loadingMessages[messageIndex];
 
 const messageInterval = setInterval(() => {
-  messageIndex = (messageIndex + 1) % loadingMessages.length
+  messageIndex = (messageIndex + 1) % loadingMessages.length;
+  loadingProgressText.textContent = loadingMessages[messageIndex];
+}, 3000); // co 3 sekundy
+
 
 
     const data = {
