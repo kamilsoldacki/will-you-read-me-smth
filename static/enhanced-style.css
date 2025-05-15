@@ -56,3 +56,7 @@ textarea {
   max-width: 100%;
   box-sizing: border-box;
 }
+
+#button-row {
+  min-height: 48px; /* lub dokładnie tyle, ile mają razem przyciski */
+}
