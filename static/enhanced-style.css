@@ -31,9 +31,11 @@ body {
 
 #form-wrapper {
   max-width: 768px;
+  min-height: 620px; /* lub inna wartość, zależnie od Twojego najdłuższego kroku *
   width: 100%;
   margin: 0 auto;
   padding: 0 1rem;
+  
 }
 
 textarea {
