@@ -61,14 +61,31 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Rozpocznij animację procentową
     let percent = 0;
-    const progressInterval = setInterval(() => {
-      if (percent < 98) {
-        percent += Math.floor(Math.random() * 4) + 1;
-        if (percent > 98) percent = 98;
-        loadingBarFill.style.width = percent + "%";
-        loadingProgressText.textContent = `Generujemy Twoją bajkę... ${percent}%`;
-      }
-    }, 1200);
+
+const loadingMessages = [
+  "Hmm... niech pomyślę...",
+  "Zamykaj oczy... i już lecimy do krainy wyobraźni...",
+  "Cii... właśnie podsłuchuję pomysł od smoka z sąsiedztwa.",
+  "OK, zaczynam pisać Twoją historię!",
+  "Oj! Jeden bohater właśnie zgubił swoją... pelerynę?!",
+  "Wiesz co? Ta bajka będzie miała zwrot akcji.",
+  "Jeszcze niegotowe!",
+  "Szukam najlepszego zakończenia.",
+  "O! Mam pomysł!",
+  "...ale najpierw herbatka.",
+  "A gdyby bohaterem był... pies w skarpetkach?",
+  "Ta historia będzie tak dobra, mówię Ci!",
+  "Dodajemy szczyptę szaleństwa, odrobinę odwagi...",
+  "Wiesz co? Już słyszę śmiech bohaterów zza rogu...",
+  "Jeszcze tylko kilka słów...",
+];
+
+let messageIndex = 0;
+loadingProgressText.textContent = loadingMessages[messageIndex];
+
+const messageInterval = setInterval(() => {
+  messageIndex = (messageIndex + 1) % loadingMessages.length
+
 
     const data = {
       q1: form.q1.value,
