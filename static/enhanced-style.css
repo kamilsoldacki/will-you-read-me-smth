@@ -60,3 +60,7 @@ textarea {
 #button-row {
   min-height: 48px; /* lub dokładnie tyle, ile mają razem przyciski */
 }
+
+#errorBox {
+  transition: opacity 0.3s ease;
+}
