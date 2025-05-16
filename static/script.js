@@ -150,6 +150,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
       audio.src = "data:audio/wav;base64," + result.audio_base64;
       audio.load();
+      audio.play().catch((e) => {
+        console.warn("Autoodtwarzanie zablokowane przez przeglądarkę:", e);
+      });
 
       loadingBar.style.display = "none";
       player.style.display = "block";
