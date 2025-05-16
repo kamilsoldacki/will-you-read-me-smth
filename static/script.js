@@ -156,6 +156,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
       setTimeout(() => {
         player.classList.add("visible");
+        // pokaż formularz zgody po 45 sekundach
+setTimeout(() => {
+  document.getElementById("shareStoryContent").value = result.text;
+  document.getElementById("share-form").style.display = "block";
+}, 45000);
+
       }, 10);
     } catch (err) {
       clearInterval(progressInterval);
@@ -170,3 +176,32 @@ document.getElementById("startBtn").addEventListener("click", () => {
   document.getElementById("welcome-screen").style.display = "none";
   document.getElementById("form-wrapper").style.display = "block";
 });
+
+
+const shareForm = document.getElementById("submitStoryForm");
+if (shareForm) {
+  shareForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const name = shareForm.name.value.trim();
+    const email = shareForm.email.value.trim();
+    const consent = shareForm.consent.checked;
+    const story = shareForm.story.value;
+
+    if (!name || !email || !consent) return;
+
+    const payload = { name, email, consent, story };
+
+    try {
+      await fetch("/share", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      document.getElementById("shareThanks").classList.remove("hidden");
+      shareForm.reset();
+    } catch (err) {
+      console.error("Błąd przy wysyłaniu bajki:", err);
+    }
+  });
+}
