@@ -58,24 +58,16 @@ document.addEventListener("DOMContentLoaded", function () {
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    // Walidacja pól przed rozpoczęciem generowania
+    // Sprawdzenie wszystkich pól textarea
     const inputs = form.querySelectorAll("textarea");
-let allFilled = true;
+    let allFilled = true;
+    inputs.forEach((input) => {
+      if (!input.value.trim()) {
+        allFilled = false;
+      }
+    });
 
-inputs.forEach((input) => {
-  if (!input.value.trim()) {
-    allFilled = false;
-  }
-});
-
-if (!allFilled) {
-  const errorBox = document.getElementById("errorBox");
-  if (errorBox) {
-    errorBox.classList.remove("hidden");
-  }
-  return;
-}
- {
+    if (!allFilled) {
       const errorBox = document.getElementById("errorBox");
       if (errorBox) {
         errorBox.classList.remove("hidden");
@@ -119,7 +111,7 @@ if (!allFilled) {
     const messageInterval = setInterval(() => {
       messageIndex = (messageIndex + 1) % loadingMessages.length;
       loadingProgressText.textContent = loadingMessages[messageIndex];
-    }, 5555);
+    }, 3000);
 
     const progressInterval = setInterval(() => {
       if (percent < 98) {
