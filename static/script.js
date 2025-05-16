@@ -20,12 +20,12 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     stepIndicator.textContent = `${index + 1} z ${steps.length}`;
     if (index === 0) {
-    prevBtn.classList.add("invisible");
-    prevBtn.classList.remove("hidden");
-  } else {
-    prevBtn.classList.remove("invisible");
-    prevBtn.classList.remove("hidden");
-  }
+      prevBtn.classList.add("invisible");
+      prevBtn.classList.remove("hidden");
+    } else {
+      prevBtn.classList.remove("invisible");
+      prevBtn.classList.remove("hidden");
+    }
     nextBtn.classList.toggle("hidden", index === steps.length - 1);
     submitBtn.classList.toggle("hidden", index !== steps.length - 1);
   }
@@ -46,8 +46,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+  document.querySelectorAll("textarea").forEach((area) => {
+    area.addEventListener("input", () => {
+      const errorBox = document.getElementById("errorBox");
+      if (errorBox) {
+        errorBox.classList.add("hidden");
+      }
+    });
+  });
+
   form.addEventListener("submit", async function (e) {
     e.preventDefault();
+
+    // Walidacja pól przed rozpoczęciem generowania
+    if (!form.q1.value || !form.q2.value || !form.q3.value || !form.q4.value || !form.q5.value) {
+      const errorBox = document.getElementById("errorBox");
+      if (errorBox) {
+        errorBox.classList.remove("hidden");
+      }
+      return;
+    }
 
     if (!loadingBar || !audio || !player || !loadingBarFill || !loadingProgressText) {
       console.error("Brakuje jednego z wymaganych elementów");
@@ -59,55 +77,41 @@ document.addEventListener("DOMContentLoaded", function () {
     player.classList.remove("visible");
     player.style.display = "none";
 
-    // Rozpocznij animację procentową
     let percent = 0;
 
-const loadingMessages = [
-  "Hmm... niech pomyślę...",
-  "Zamykaj oczy... i już lecimy do krainy wyobraźni...",
-  "Cii... właśnie podsłuchuję pomysł od smoka z sąsiedztwa.",
-  "OK, zaczynam pisać Twoją historię!",
-  "Oj! Jeden bohater właśnie zgubił swoją... pelerynę?!",
-  "Wiesz co? Ta bajka będzie miała zwrot akcji.",
-  "Jeszcze niegotowe!",
-  "Szukam najlepszego zakończenia.",
-  "O! Mam pomysł!",
-  "...ale najpierw herbatka.",
-  "A gdyby bohaterem był... pies w skarpetkach?",
-  "Ta historia będzie tak dobra, mówię Ci!",
-  "Dodajemy szczyptę szaleństwa, odrobinę odwagi...",
-  "Wiesz co? Już słyszę śmiech bohaterów zza rogu...",
-  "Jeszcze tylko kilka słów...",
-];
+    const loadingMessages = [
+      "Hmm... niech pomyślę...",
+      "Zamykaj oczy... i już lecimy do krainy wyobraźni...",
+      "Cii... właśnie podsłuchuję pomysł od smoka z sąsiedztwa.",
+      "OK, zaczynam pisać Twoją historię!",
+      "Oj! Jeden bohater właśnie zgubił swoją... pelerynę?!",
+      "Wiesz co? Ta bajka będzie miała zwrot akcji.",
+      "Jeszcze niegotowe!",
+      "Szukam najlepszego zakończenia.",
+      "O! Mam pomysł!",
+      "...ale najpierw herbatka.",
+      "A gdyby bohaterem był... pies w skarpetkach?",
+      "Ta historia będzie tak dobra, mówię Ci!",
+      "Dodajemy szczyptę szaleństwa, odrobinę odwagi...",
+      "Wiesz co? Już słyszę śmiech bohaterów zza rogu...",
+      "Jeszcze tylko kilka słów...",
+    ];
 
-let messageIndex = 0;
-loadingProgressText.textContent = loadingMessages[messageIndex];
+    let messageIndex = 0;
+    loadingProgressText.textContent = loadingMessages[messageIndex];
 
-const messageInterval = setInterval(() => {
-  messageIndex = (messageIndex + 1) % loadingMessages.length;
-  loadingProgressText.textContent = loadingMessages[messageIndex];
-}, 3000); // co 3 sekundy
+    const messageInterval = setInterval(() => {
+      messageIndex = (messageIndex + 1) % loadingMessages.length;
+      loadingProgressText.textContent = loadingMessages[messageIndex];
+    }, 5555);
 
-const progressInterval = setInterval(() => {
-  if (percent < 98) {
-    percent += Math.floor(Math.random() * 4) + 1;
-    if (percent > 98) percent = 98;
-    loadingBarFill.style.width = percent + "%";
-  }
-}, 1200);
-
-  if (!form.q1.value || !form.q2.value || !form.q3.value || !form.q4.value || !form.q5.value) {
-  const errorBox = document.getElementById("errorBox");
-  if (errorBox) {
-    errorBox.classList.remove("hidden");
-  }
-  form.style.display = "block";
-  loadingBar.style.display = "none";
-  return;
-}
-
-    
-// <-- TU DOPIERO zaczyna się fetch
+    const progressInterval = setInterval(() => {
+      if (percent < 98) {
+        percent += Math.floor(Math.random() * 4) + 1;
+        if (percent > 98) percent = 98;
+        loadingBarFill.style.width = percent + "%";
+      }
+    }, 1200);
 
     const data = {
       q1: form.q1.value,
@@ -147,6 +151,7 @@ const progressInterval = setInterval(() => {
       }, 10);
     } catch (err) {
       clearInterval(progressInterval);
+      clearInterval(messageInterval);
       loadingBar.style.display = "none";
       console.error("Błąd przy generowaniu:", err);
     }
