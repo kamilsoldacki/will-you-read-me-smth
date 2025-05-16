@@ -96,6 +96,17 @@ const progressInterval = setInterval(() => {
   }
 }, 1200);
 
+  if (!form.q1.value || !form.q2.value || !form.q3.value || !form.q4.value || !form.q5.value) {
+  const errorBox = document.getElementById("errorBox");
+  if (errorBox) {
+    errorBox.classList.remove("hidden");
+  }
+  form.style.display = "block";
+  loadingBar.style.display = "none";
+  return;
+}
+
+    
 // <-- TU DOPIERO zaczyna się fetch
 
     const data = {
