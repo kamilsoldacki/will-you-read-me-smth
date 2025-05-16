@@ -102,22 +102,22 @@ Bo każda bajka zaczyna się od małego:</p>
 
       
 <!-- Formularz zgody (DOM: pojawia się 45s po playerze) -->
-<div id="share-form" style="display:none;" class="mt-8 text-xs text-gray-800">
-  <p class="mb-2 text-gray-600">
+<div id="share-form" style="display:none;" class="mt-8 border border-gray-200 rounded-md p-4 text-gray-800">
+  <p class="mb-4 text-gray-700">
     Papa Ninja zachęca do podzielenia się Twoją historią z innymi podróżnikami wyobraźni 🌟<br>
     Wypełnij poniższy formularz, jeśli chcesz, aby Twoja bajka mogła wybrzmieć dalej.
   </p>
-  <form id="submitStoryForm" class="space-y-3 text-xs">
-    <input type="text" name="name" placeholder="Twoje imię" class="w-full border rounded p-2 text-xs" required />
-    <input type="email" name="email" placeholder="Twój e-mail" class="w-full border rounded p-2 text-xs" required />
-    <label class="flex items-start text-xs">
+  <form id="submitStoryForm" class="space-y-4">
+    <input type="text" name="name" placeholder="Twoje imię" class="w-full border border-gray-300 rounded p-2 text-sm" required />
+    <input type="email" name="email" placeholder="Twój e-mail" class="w-full border border-gray-300 rounded p-2 text-sm" required />
+    <label class="flex items-start text-sm">
       <input type="checkbox" name="consent" required class="mt-1 mr-2" />
       Wyrażam zgodę na publikację mojej bajki w Podcaście Papy Ninja
     </label>
     <textarea name="story" id="shareStoryContent" class="hidden"></textarea>
-    <button type="submit" class="bg-black text-white text-xs px-4 py-2 rounded">Wyślij moją bajkę</button>
+    <button type="submit" class="bg-black text-white text-sm px-4 py-2 rounded">Wyślij moją bajkę</button>
   </form>
-  <p id="shareThanks" class="text-green-600 text-xs mt-2 hidden">Dziękujemy! Twoja bajka została przesłana do Papy Ninja 🎉</p>
+  <p id="shareThanks" class="text-green-600 text-sm mt-3 hidden">Dziękujemy! Twoja bajka została przesłana do Papy Ninja 🎉</p>
 </div>
 
 
