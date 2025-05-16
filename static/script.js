@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const messageInterval = setInterval(() => {
       messageIndex = (messageIndex + 1) % loadingMessages.length;
       loadingProgressText.textContent = loadingMessages[messageIndex];
-    }, 3000);
+    }, 5555);
 
     const progressInterval = setInterval(() => {
       if (percent < 98) {
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (percent > 98) percent = 98;
         loadingBarFill.style.width = percent + "%";
       }
-    }, 1200);
+    }, 2222);
 
     const data = {
       q1: form.q1.value,
