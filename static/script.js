@@ -59,7 +59,23 @@ document.addEventListener("DOMContentLoaded", function () {
     e.preventDefault();
 
     // Walidacja pól przed rozpoczęciem generowania
-    if (!form.q1.value || !form.q2.value || !form.q3.value || !form.q4.value || !form.q5.value) {
+    const inputs = form.querySelectorAll("textarea");
+let allFilled = true;
+
+inputs.forEach((input) => {
+  if (!input.value.trim()) {
+    allFilled = false;
+  }
+});
+
+if (!allFilled) {
+  const errorBox = document.getElementById("errorBox");
+  if (errorBox) {
+    errorBox.classList.remove("hidden");
+  }
+  return;
+}
+ {
       const errorBox = document.getElementById("errorBox");
       if (errorBox) {
         errorBox.classList.remove("hidden");
