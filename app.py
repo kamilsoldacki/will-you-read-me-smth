@@ -39,7 +39,7 @@ Sprawdź poprawność językową, odmianę i inne aspekty języka polskiego.
 
 Jeśli którakolwiek z odpowiedzi użytkownika zawiera treści nieodpowiednie (np. obraźliwe, seksualne, wulgarne, przemocowe lub niewłaściwe dla dzieci), nie generuj historii.  
 Zamiast tego odpowiedz grzecznie:  
-"Przykro mi, nie przeczytam nie pomogę Ci w stworzeniu tej bajki. Zmień swój pomysł i spróbuj ponownie!"
+"Przykro mi, nie pomogę Ci w stworzeniu tej bajki. Zmień swój pomysł i spróbuj ponownie!"
 """
 
     response = client.chat.completions.create(
