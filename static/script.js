@@ -11,6 +11,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const player = document.getElementById("player");
   const audio = document.getElementById("audio");
 
+  let currentStep = 0; // ← DODAJ TO
+  
   const startBtn = document.getElementById("startBtn");
   if (startBtn) {
     startBtn.addEventListener("click", () => {
