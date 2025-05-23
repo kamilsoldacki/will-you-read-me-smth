@@ -12,6 +12,22 @@ document.addEventListener("DOMContentLoaded", function () {
   const audio = document.getElementById("audio");
 
   let currentStep = 0; // ← DODAJ TO
+
+  function showStep(index) {
+  steps.forEach((step, i) => {
+    step.classList.toggle("hidden", i !== index);
+  });
+  stepIndicator.textContent = `${index + 1} z ${steps.length}`;
+  if (index === 0) {
+    prevBtn.classList.add("invisible");
+    prevBtn.classList.remove("hidden");
+  } else {
+    prevBtn.classList.remove("invisible");
+    prevBtn.classList.remove("hidden");
+  }
+  nextBtn.classList.toggle("hidden", index === steps.length - 1);
+  submitBtn.classList.toggle("hidden", index !== steps.length - 1);
+}
   
   const startBtn = document.getElementById("startBtn");
   if (startBtn) {
