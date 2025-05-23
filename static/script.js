@@ -201,7 +201,7 @@ document.addEventListener("DOMContentLoaded", function () {
 setTimeout(() => {
   document.getElementById("shareStoryContent").value = result.text;
   document.getElementById("share-form").style.display = "block";
-}, 45000);
+}, 21000);
 
       }, 10);
     } catch (err) {
