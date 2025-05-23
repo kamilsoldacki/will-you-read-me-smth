@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+
   showStep(currentStep);
 
   nextBtn.addEventListener("click", () => {
@@ -192,11 +193,6 @@ setTimeout(() => {
       console.error("Błąd przy generowaniu:", err);
     }
   });
-});
-
-document.getElementById("startBtn").addEventListener("click", () => {
-  document.getElementById("welcome-screen").style.display = "none";
-  document.getElementById("form-wrapper").style.display = "block";
 });
 
 
