@@ -88,10 +88,37 @@ document.addEventListener("DOMContentLoaded", function () {
     let percent = 0;
 
     const loadingMessages = [
+      "Hm mmm… smok właśnie zmienia głos. Dajmy mu sekundę.",
+      "Papier się nie kończy, ale atrament chce być różowy.",
+      "O nie! Bohater właśnie zasnął...",
+      "Muszę jeszcze tylko dobrać odpowiedni zapach do tej sceny.",
+      "Cii… słucham, co mówi las.",
+      "Jeszcze moment - krasnal poprawia przecinki.",
+      "Narrator ćwiczy głos ślimaka. To trudne.",
+      "Czy jednorożce lubią wyścigi sporotwe? Sprawdzam.",
+      "Tworzę mapę świata, żeby się nie zgubić w opowieści.",
+      "Hm mmm… z której strony wchodzi słońce do tej bajki?",
+      "Zawijam słowa w miękkie kocyki.",
+      "Pióro pisze, ale bohaterka przerywa i się śmieje.",
+      "Dodaję właśnie cichy deszcz z błyszczących liter.",
+      "Jeszcze tylko sprawdzę czy wilk nie podjada dialogów.",
+      "Zegar bajek tyka…",
+      "O, ktoś właśnie wpadł z nowym pomysłem na bohatera!",
+      "Cicho... zaczarowuję drzwi do tej historii.",
+      "Testuję, czy ta bajka zmieści się w jednej kieszeni.",
+      "Czy pies w skarpetkach może być rycerzem?",
+      "Przesłuchuję chór wróżek do sceny otwarcia.",
+      "Jeszcze moment… mieszam humor z odwagą.",
+      "Wiatr musi brzmieć jak muzyka.",
+      "Niektóre litery są dziś bardzo figlarne. Ehh, poprawiam literówki.",
+      "Piszę, śmieję się, czytam.",
+      "Dobre bajki potrzebują tylko chwili z odrobiną magii.",
+      "Łączę punkty: początek, środek i boom! Wielkie zaskoczenie.",
+      "Ktoś właśnie podrzucił sówkę z podpowiedzią!",
+      "Trzymam pióro w jednej ręce, a przygodę w drugiej."
       "Hmm... niech pomyślę...",
       "Zamykaj oczy... i już lecimy do krainy wyobraźni...",
       "Cii... właśnie podsłuchuję pomysł od smoka z sąsiedztwa.",
-      "OK, zaczynam pisać Twoją historię!",
       "Oj! Jeden bohater właśnie zgubił swoją... pelerynę?!",
       "Wiesz co? Ta bajka będzie miała zwrot akcji.",
       "Jeszcze niegotowe!",
@@ -105,13 +132,16 @@ document.addEventListener("DOMContentLoaded", function () {
       "Jeszcze tylko kilka słów...",
     ];
 
-    let messageIndex = 0;
-    loadingProgressText.textContent = loadingMessages[messageIndex];
+    function getRandomMessage() {
+    return loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
+  }
+  
+  loadingProgressText.textContent = getRandomMessage();
+  
+  const messageInterval = setInterval(() => {
+    loadingProgressText.textContent = getRandomMessage();
+  }, 5555);
 
-    const messageInterval = setInterval(() => {
-      messageIndex = (messageIndex + 1) % loadingMessages.length;
-      loadingProgressText.textContent = loadingMessages[messageIndex];
-    }, 5555);
 
     const progressInterval = setInterval(() => {
       if (percent < 98) {
