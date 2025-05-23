@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
   const steps = document.querySelectorAll(".step");
   const nextBtn = document.getElementById("nextBtn");
@@ -12,22 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
   const player = document.getElementById("player");
   const audio = document.getElementById("audio");
 
-  let currentStep = 0;
-
-  function showStep(index) {
-    steps.forEach((step, i) => {
-      step.classList.toggle("hidden", i !== index);
+  const startBtn = document.getElementById("startBtn");
+  if (startBtn) {
+    startBtn.addEventListener("click", () => {
+      document.getElementById("welcome-screen").style.display = "none";
+      document.getElementById("form-wrapper").style.display = "block";
     });
-    stepIndicator.textContent = `${index + 1} z ${steps.length}`;
-    if (index === 0) {
-      prevBtn.classList.add("invisible");
-      prevBtn.classList.remove("hidden");
-    } else {
-      prevBtn.classList.remove("invisible");
-      prevBtn.classList.remove("hidden");
-    }
-    nextBtn.classList.toggle("hidden", index === steps.length - 1);
-    submitBtn.classList.toggle("hidden", index !== steps.length - 1);
   }
 
   showStep(currentStep);
@@ -115,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
       "Dobre bajki potrzebują tylko chwili z odrobiną magii.",
       "Łączę punkty: początek, środek i boom! Wielkie zaskoczenie.",
       "Ktoś właśnie podrzucił sówkę z podpowiedzią!",
-      "Trzymam pióro w jednej ręce, a przygodę w drugiej."
+      "Trzymam pióro w jednej ręce, a przygodę w drugiej.",
       "Hmm... niech pomyślę...",
       "Zamykaj oczy... i już lecimy do krainy wyobraźni...",
       "Cii... właśnie podsłuchuję pomysł od smoka z sąsiedztwa.",
