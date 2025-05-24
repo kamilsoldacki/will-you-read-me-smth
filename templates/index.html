@@ -8,27 +8,27 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/static/enhanced-style.css">
   <style>
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: #fafafa;
-    }
-    textarea::placeholder {
-      color: #888;
-    }
-    textarea {
-      resize: none;
-    }
-    #player {
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-    }
-    #player.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .step { width: 100%; }
-</style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fafafa;
+  }
+  textarea::placeholder {
+    color: #888;
+  }
+  textarea {
+    resize: none;
+  }
+  #player {
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  #player.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .step { width: 100%; }
+</style> <!-- ← DODAJ TO -->
 </head>
 <body class="text-gray-800">
   <a href="/" id="branding" class="text-black hover:underline">papa.ninja</a>
@@ -109,7 +109,7 @@ Bo każda bajka zaczyna się od małego:<br></p>
   <form id="submitStoryForm" class="space-y-4">
     <input type="text" name="name" placeholder="Twoje imię" class="w-full border border-gray-300 rounded p-2 text-sm" required />
     <input type="email" name="email" placeholder="Twój e-mail" class="w-full border border-gray-300 rounded p-2 text-sm" required />
-    <label class="flex items-start text-xs">
+    <label class="flex items-start text-xs cursor-pointer">
       <input type="checkbox" name="consent" required class="mt-1 mr-2" />
       Wyrażam zgodę na publikację mojej bajki w podcaście Papy Ninja
     </label>
